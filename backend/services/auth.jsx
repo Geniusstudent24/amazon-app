@@ -69,12 +69,13 @@ router.post("/login", async (req, res) => {
     } else {
       user = await User.findOne({ phone: input });
     }
-
+    console.log("User found");
     if (!user) {
       return res.status(400).json({ msg: "Invalid credentials." });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
+    console.log("Password matched");
     if (!isMatch) {
       return res.status(400).json({ msg: "Invalid password." });
     }
@@ -86,11 +87,14 @@ router.post("/login", async (req, res) => {
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    console.log("OTP generated");
+
     user.otp = otp;
     user.otpExpiry = Date.now() + 10 * 60 * 1000;
     await user.save();
-
+    console.log("User saved");
     await sendOtpEmail(user.email, otp);
+    console.log("Email sent");
     res.json({ msg: "OTP sent to your email. Please verify." });
   } catch (err) {
     console.error(err.message);
