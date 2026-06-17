@@ -18,15 +18,34 @@ let transporter = nodemailer.createTransport({
   },
 });
 
-const sendOtpEmail = async (email, otp) => {
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: email,
-    subject: "Amazon Clone OTP Verification",
-    html: `<h1>Your OTP is: ${otp}</h1>`,
-  };
+// const sendOtpEmail = async (email, otp) => {
+//   const mailOptions = {
+//     from: process.env.EMAIL_USER,
+//     to: email,
+//     subject: "Amazon Clone OTP Verification",
+//     html: `<h1>Your OTP is: ${otp}</h1>`,
+//   };
 
-  await transporter.sendMail(mailOptions);
+//   await transporter.sendMail(mailOptions);
+// };
+
+const sendOtpEmail = async (email, otp) => {
+  console.log("EMAIL_USER =", process.env.EMAIL_USER);
+console.log("EMAIL_PASS exists =", !!process.env.EMAIL_PASS);
+  try {
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Amazon Clone OTP Verification",
+      html: `<h1>Your OTP is: ${otp}</h1>`,
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log("Email sent successfully");
+  } catch (err) {
+    console.error("MAIL ERROR:", err);
+    throw err;
+  }
 };
 
 router.post("/check-user", async (req, res) => {
@@ -97,7 +116,8 @@ router.post("/login", async (req, res) => {
     console.log("Email sent");
     res.json({ msg: "OTP sent to your email. Please verify." });
   } catch (err) {
-    console.error(err.message);
+    // console.error(err.message);
+    console.error("LOGIN ERROR:", err);
     res.status(500).send("Server Error");
   }
 });
