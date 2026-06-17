@@ -12,7 +12,7 @@ export const CartProvider = ({ children }) => {
   const fetchProductDetails = async (productId) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/products/${productId}`
+        `https://amazon-app-mid8.onrender.com/api/products/${productId}`
       );
       return response.data;
     } catch (err) {
@@ -24,7 +24,7 @@ export const CartProvider = ({ children }) => {
   const fetchCartItemsFromBackend = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:5000/api/auth/cart", {
+      const response = await axios.get("https://amazon-app-mid8.onrender.com/api/auth/cart", {
         withCredentials: true,
       });
 
@@ -61,7 +61,7 @@ export const CartProvider = ({ children }) => {
   const addToCart = async (product, quantity = 1) => {
     try {
       await axios.post(
-        "http://localhost:5000/api/auth/cart/add",
+        "https://amazon-app-mid8.onrender.com/api/auth/cart/add",
         { productId: product.id, quantity },
         { withCredentials: true }
       );
@@ -75,7 +75,7 @@ export const CartProvider = ({ children }) => {
     if (newQuantity < 1) return;
     try {
       const response = await axios.put(
-        "http://localhost:5000/api/auth/cart/update",
+        "https://amazon-app-mid8.onrender.com/api/auth/cart/update",
         { productId: id, quantity: newQuantity },
         { withCredentials: true }
       );
@@ -89,7 +89,7 @@ export const CartProvider = ({ children }) => {
   const removeCartItem = async (id) => {
     try {
       const response = await axios.delete(
-        "http://localhost:5000/api/auth/cart/remove",
+        "https://amazon-app-mid8.onrender.com/api/auth/cart/remove",
         { data: { productId: id }, withCredentials: true }
       );
       console.log(response.data.msg);

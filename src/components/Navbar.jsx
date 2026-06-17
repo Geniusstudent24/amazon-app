@@ -88,7 +88,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:5000/api/auth/logout", {
+      await axios.get("https://amazon-app-mid8.onrender.com/api/auth/logout", {
         withCredentials: true,
       });
 
@@ -119,7 +119,7 @@ const Navbar = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/set-location",
+        "https://amazon-app-mid8.onrender.com/api/auth/set-location",
         {
           zipCode: zipCodeInput,
           countryCode: "in",
@@ -165,7 +165,7 @@ const Navbar = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/categories")
+      .get("https://amazon-app-mid8.onrender.com/api/categories")
       .then((response) => setCategory(response.data))
       .catch((error) => console.log("error fetching..", error));
   }, []);
@@ -192,7 +192,7 @@ const Navbar = () => {
       setSearchDataError(null);
       try {
         const productsResponse = await axios.get(
-          "http://localhost:5000/api/products?_limit=194"
+          "https://amazon-app-mid8.onrender.com/api/products?_limit=194"
         );
         if (productsResponse.data && Array.isArray(productsResponse.data)) {
           setAllProductsForSearch(productsResponse.data);
@@ -201,7 +201,7 @@ const Navbar = () => {
         }
 
         const categoriesResponse = await axios.get(
-          "http://localhost:5000/api/categories"
+          "https://amazon-app-mid8.onrender.com/api/categories"
         );
         if (categoriesResponse.data && Array.isArray(categoriesResponse.data)) {
           setAllCategoriesForSearch(categoriesResponse.data);

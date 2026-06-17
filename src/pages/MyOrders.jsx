@@ -14,7 +14,7 @@ function MyOrders() {
     const fetchMyOrders = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/orders/my-orders",
+          "https://amazon-app-mid8.onrender.com/api/orders/my-orders",
           {
             withCredentials: true,
           }
@@ -26,7 +26,7 @@ function MyOrders() {
             const populatedItems = await Promise.all(
               order.items.map(async (item) => {
                 const productDetails = await axios.get(
-                  `http://localhost:5000/api/products/${item.productId}`
+                  `https://amazon-app-mid8.onrender.com/api/products/${item.productId}`
                 );
                 return { ...productDetails.data, quantity: item.quantity };
               })

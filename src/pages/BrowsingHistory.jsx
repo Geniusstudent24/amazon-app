@@ -26,7 +26,7 @@ function BrowsingHistory() {
 
         
         const productDetailsPromises = storedHistory.map((productId) =>
-          axios.get(`http://localhost:5000/api/products/${productId}`)
+          axios.get(`https://amazon-app-mid8.onrender.com/api/products/${productId}`)
         );
 
         const responses = await Promise.all(productDetailsPromises);

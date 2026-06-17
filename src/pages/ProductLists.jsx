@@ -66,7 +66,7 @@ function ProductList() {
       setError(null);
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/products?category=${categoryName}`
+          `https://amazon-app-mid8.onrender.com/api/products?category=${categoryName}`
         );
 
         if (!response.data || !Array.isArray(response.data)) {

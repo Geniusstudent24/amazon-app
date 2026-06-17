@@ -12,7 +12,7 @@ export const ProductProvider = ({ children }) => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/products?_limit=194"
+          "https://amazon-app-mid8.onrender.com/api/products?_limit=194"
         );
         setAllProducts(response.data);
         setLoading(false);

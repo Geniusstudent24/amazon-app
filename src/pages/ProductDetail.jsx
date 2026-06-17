@@ -55,7 +55,7 @@ function ProductDetail() {
       setCurrentImageIndex(0);
       try {
         const productResponse = await axios.get(
-          `http://localhost:5000/api/products/${productId}`
+          `https://amazon-app-mid8.onrender.com/api/products/${productId}`
         );
         if (!productResponse.data) {
           throw new Error("Product not found");
@@ -71,7 +71,7 @@ function ProductDetail() {
         localStorage.setItem("browsingHistory", JSON.stringify(newHistory));
 
         const categoryResponse = await axios.get(
-          `http://localhost:5000/api/products?category=${productResponse.data.category}`
+          `https://amazon-app-mid8.onrender.com/api/products?category=${productResponse.data.category}`
         );
         if (categoryResponse.data && Array.isArray(categoryResponse.data)) {
           const filteredRelated = categoryResponse.data.filter(

@@ -60,7 +60,7 @@ function Login() {
     if (Object.keys(err).length > 0) return;
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/check-user",
+        "https://amazon-app-mid8.onrender.com/api/auth/check-user",
         { input }
       );
       setBackendMessage(response.data.msg);
@@ -92,7 +92,7 @@ function Login() {
     if (Object.keys(err).length > 0) return;
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://amazon-app-mid8.onrender.com/api/auth/login",
         {
           input,
           password,
@@ -125,7 +125,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
+        "https://amazon-app-mid8.onrender.com/api/auth/signup",
         {
           input,
           password,
@@ -157,7 +157,7 @@ function Login() {
     if (Object.keys(err).length > 0) return;
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/verify-otp",
+        "https://amazon-app-mid8.onrender.com/api/auth/verify-otp",
         { input, otp },
         { withCredentials: true }
       );

@@ -20,7 +20,7 @@ const Profile = () => {
     const fetchUserProfile = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/auth/profile",
+          "https://amazon-app-mid8.onrender.com/api/auth/profile",
           {
             withCredentials: true,
           }
@@ -115,7 +115,7 @@ const Profile = () => {
       };
 
       const response = await axios.put(
-        "http://localhost:5000/api/auth/profile",
+        "https://amazon-app-mid8.onrender.com/api/auth/profile",
         updatedData,
         { withCredentials: true }
       );

@@ -36,7 +36,7 @@ function Cart() {
     const checkLoginStatus = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/auth/status",
+          "https://amazon-app-mid8.onrender.com/api/auth/status",
           {
             withCredentials: true,
           }
@@ -58,7 +58,7 @@ function Cart() {
     const fetchRecommendations = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/products?_limit=5"
+          "https://amazon-app-mid8.onrender.com/api/products?_limit=5"
         );
         if (response.data && Array.isArray(response.data)) {
           setRecommendedProducts(response.data);

@@ -37,7 +37,7 @@ function AiAssistant() {
       }));
 
       const response = await axios.post(
-        "http://localhost:5000/api/chat",
+        "https://amazon-app-mid8.onrender.com/api/chat",
         {
           message: userMessage,
           history: formattedHistory,

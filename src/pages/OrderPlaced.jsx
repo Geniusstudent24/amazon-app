@@ -26,7 +26,7 @@ function OrderPlaced() {
     const fetchOrdersAndProfile = async () => {
       try {
         const profileResponse = await axios.get(
-          "http://localhost:5000/api/auth/profile",
+          "https://amazon-app-mid8.onrender.com/api/auth/profile",
           {
             withCredentials: true,
           }
@@ -34,7 +34,7 @@ function OrderPlaced() {
         setUserProfile(profileResponse.data);
 
         const ordersResponse = await axios.get(
-          "http://localhost:5000/api/orders/my-orders",
+          "https://amazon-app-mid8.onrender.com/api/orders/my-orders",
           {
             withCredentials: true,
           }
@@ -46,7 +46,7 @@ function OrderPlaced() {
             const populatedItems = await Promise.all(
               order.items.map(async (item) => {
                 const productDetails = await axios.get(
-                  `http://localhost:5000/api/products/${item.productId}`
+                  `https://amazon-app-mid8.onrender.com/api/products/${item.productId}`
                 );
                 return { ...productDetails.data, quantity: item.quantity };
               })
@@ -82,7 +82,7 @@ function OrderPlaced() {
           const nextStatus = statuses[currentIndex + 1];
           try {
             await axios.put(
-              `http://localhost:5000/api/orders/update-status/${selectedOrder._id}`,
+              `https://amazon-app-mid8.onrender.com/api/orders/update-status/${selectedOrder._id}`,
               { newStatus: nextStatus },
               {
                 withCredentials: true,
@@ -134,7 +134,7 @@ function OrderPlaced() {
         try {
           if (selectedOrder && selectedOrder._id) {
             await axios.post(
-              `http://localhost:5000/api/orders/cancel/${selectedOrder._id}`,
+              `https://amazon-app-mid8.onrender.com/api/orders/cancel/${selectedOrder._id}`,
               {},
               {
                 withCredentials: true,
