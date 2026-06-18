@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
-  origin: "https://amazon-app-meet.vercel.app/",
+  origin: "https://amazon-app-meet.vercel.app.com",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
