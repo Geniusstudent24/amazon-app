@@ -20,6 +20,7 @@
     "mongoose": "^8.17.1",
     "nodemailer": "^7.0.6",
     "nodemon": "^3.1.10",
+    "resend": "^3.2.0",
     "twilio": "^5.8.2"
   }
 }
