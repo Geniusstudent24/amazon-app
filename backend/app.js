@@ -12,6 +12,7 @@ const productsData = require("./routes/productRoutes.js");
 const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cookieParser());
+
 const corsOptions = {
   origin: "https://amazon-app-meet.vercel.app",
   credentials: true,
